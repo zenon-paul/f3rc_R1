@@ -8,22 +8,8 @@
 #define TRANSLATION 1
 #define ROTATION 0
 #define STOP -1
+#define RATE 115200
+#define BUFFER_SIZE 64
+#define JOYMAX 520.0
 
-class R1{
-    private:
-    public:
-        AirCyli Arm;
-        Belt Blt;
-        Controler Ps4;
-        int Motion;
-
-        int StickL[2];
-        int StickR[2];
-        int 
-        R1();
-        void Translation();
-        void Rotation();
-        void RecvVal();
-
-};
 #endif
