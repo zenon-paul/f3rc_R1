@@ -13,6 +13,5 @@ class Encoder{
 
         Encoder();
         void ENCReset();
-        //void CountEncoder();
 };
 #endif

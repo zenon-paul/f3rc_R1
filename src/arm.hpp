@@ -1,12 +1,13 @@
 #ifndef AIR_INCLUDE
 #define AIR_INCLUDE
 
-#define OPEN 1
-#define CLOSE 0
+#define OPENED 0
+#define CLOSED 1
 
 class Arm{
     private:
     public:
+        Arm();
         int Status;
 };
 #endif

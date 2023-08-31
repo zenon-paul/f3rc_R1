@@ -1,6 +1,6 @@
-#include"air_cylinder.hpp"
-
+#include<mbed.h>
+#include"arm.hpp"
 
 Arm::Arm(){
-
+    Status = OPENED;
 }

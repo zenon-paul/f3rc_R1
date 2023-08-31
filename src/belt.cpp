@@ -1,6 +1,14 @@
 #include"belt.hpp"
 #include"parameter.hpp"
 Belt::Belt(){
+    GoalPulse = 0;
+    Direction = 0;
+    PrevErr = 0;
+    PrevOutPutp = 0;
+    PrevOutPutv = 0;
+    Acc = 0;
+    Dir = DIR_PLUS;
+    Speed = 0;
 }
 void Belt::BeltSetGein(float p,float i,float d){
     kp = p;
@@ -8,7 +16,7 @@ void Belt::BeltSetGein(float p,float i,float d){
     kd = d;
 }
 float Belt::PID(int Current){
-//------位置柄---------------------------------
+//------位置型---------------------------------
     int err = GoalPulse - Current;
     Acc += (float)err*dTs;
     double errdif = (float)(err - PrevErr)/dTs;

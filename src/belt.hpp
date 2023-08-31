@@ -4,12 +4,11 @@
 #define DIR_PLUS 1
 #define DIR_MINUS 0
 
-asm(".global _printf_float");
-using ThisThread::sleep_for;
-
 
 class Belt{
-    int GoalPulse;//目標パルス数(絶対値)//
+    private:
+    public:
+        int GoalPulse;//目標パルス数(絶対値)//
         int Direction;//前進方向に進んだときエンコーダーを加算/後進方向に進んだときエンコーダーを加算//
         //float OutPutv;//PID速度型の出力値(最終結果PWMに突っ込む値)
         int Dir;//各モーターの回転方向
