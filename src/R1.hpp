@@ -5,7 +5,7 @@
 
 #define RATE 115200
 #define BUFFER_SIZE 64
-#define JOYMAX 520.0
+#define JOYMAX 512.0
 
 
 #endif

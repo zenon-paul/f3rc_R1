@@ -32,7 +32,7 @@ DigitalIn EncBeltBpin(PA_1);
 DigitalOut AirCylipin(A5);*/
 
 
-static UnbufferedSerial recv_serial(A0,A1);//tx,rx
+static UnbufferedSerial recv_serial(D8,D2);//tx,rx
 
 Arm arm;
 Belt blt;
@@ -62,7 +62,7 @@ void received(){//interruptin
         i++;
     }
     recv_buffer[i] = '\n';
-    sscanf(recv_buffer,"%d,%d,%d,%d,%d,%d,\n",&recv_data[0],&recv_data[1],&recv_data[2],&recv_data[3],&recv_data[4],&recv_data[5]);
+    sscanf(recv_buffer,"%d,%d,%d,%d,%d,%d\n",&recv_data[0],&recv_data[1],&recv_data[2],&recv_data[3],&recv_data[4],&recv_data[5]);
     memset(recv_buffer,'\0',BUFFER_SIZE);
 
     //------------------omni-------------------------------------
@@ -127,8 +127,8 @@ void BeltOperate(){//ticker
 
 void init(){
     recv_serial.baud(RATE);
-    recv_serial.attach(received,SerialBase::RxIrq);
     recv_serial.format(8,SerialBase::None,1);
+    recv_serial.attach(received,SerialBase::RxIrq);
     memset(recv_buffer,'\0',BUFFER_SIZE);
 
     //pidfunc.attach_us(BeltOperate,dTus);
@@ -138,7 +138,7 @@ void init(){
 int main(){
     init();
     while(1){
-        printf("(%d %d %d %d %d %d)\n",recv_data[0],recv_data[1],recv_data[2],recv_data[3],recv_data[4],recv_data[5]);
+        printf("%d(%d %d %d %d %d %d)\n",R1omni.prev_mode,recv_data[0],recv_data[1],recv_data[2],recv_data[3],recv_data[4],recv_data[5]);
         sleep_for(10);
     }
 }
