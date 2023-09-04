@@ -17,7 +17,7 @@ double get_angle(double x, double y) {//座標の偏角(rad)を求める
 //-------------------------------------------------------------
 
 OMNI::OMNI(){
-    prev_mode = STOP;
+    prev_mode = OMNISTOP;
 }
 
 void OMNI::OMNIReset(){
@@ -34,10 +34,10 @@ void OMNI::OMNIReset(){
 
 void OMNI::translation(double rad,double power){
     prev_mode = TRANSLATION;
-    s1 = power*sin(rad - RAD1);
-    s2 = power*sin(rad - RAD2);
-    s3 = power*sin(rad - RAD3);
-    s4 = power*sin(rad - RAD4);
+    s1 = WEAKEN*power*sin(rad - RAD1);
+    s2 = WEAKEN*power*sin(rad - RAD2);
+    s3 = WEAKEN*power*sin(rad - RAD3);
+    s4 = WEAKEN*power*sin(rad - RAD4);
 //-------dir更新--------------------
 	d1 = (s1 >= 0) ? 1 : 0;
 	d2 = (s2 >= 0) ? 1 : 0;
@@ -74,4 +74,95 @@ void OMNI::rotation(double x,double y){
 	    d4 = 1;
     }
 }
+void OMNI::FRONT(){
+    d1 = 1;
+    d2 = 0;
+    d3 = 0;
+    d4 = 1;
 
+    s1 = SLOW;
+    s2 = SLOW;
+    s3 = SLOW;
+    s4 = SLOW;
+}
+void OMNI::BACK(){
+    d1 = 0;
+    d2 = 1;
+    d3 = 1;
+    d4 = 0;
+    s1 = SLOW;
+    s2 = SLOW;
+    s3 = SLOW;
+    s4 = SLOW;
+
+}
+void OMNI::RIGHT(){
+    d1 = 0;
+    d2 = 0;
+    d3 = 1;
+    d4 = 1;
+    s1 = SLOW;
+    s2 = SLOW;
+    s3 = SLOW;
+    s4 = SLOW;
+
+}
+void OMNI::LEFT(){
+    d1 = 1;
+    d2 = 1;
+    d3 = 0;
+    d4 = 0;
+    s1 = SLOW;
+    s2 = SLOW;
+    s3 = SLOW;
+    s4 = SLOW;
+
+}
+void OMNI::FRONT_RIGHT(){
+    d1 = 0;
+    d2 = 0;
+    d3 = 0;
+    d4 = 1;
+
+    s1 = 0;
+    s2 = SLOW;
+    s3 = 0;
+    s4 = SLOW;
+
+}
+void OMNI::FRONT_LEFT(){
+    d1 = 1;
+    d2 = 0;
+    d3 = 0;
+    d4 = 0;
+    
+    s1 = SLOW;
+    s2 = 0;
+    s3 = SLOW;
+    s4 = 0;
+
+}
+void OMNI::BACK_RIGHT(){
+    d1 = 0;
+    d2 = 0;
+    d3 = 1;
+    d4 = 0;
+
+    s1 = SLOW;
+    s2 = 0;
+    s3 = SLOW;
+    s4 = 0;
+
+}
+void OMNI::BACK_LEFT(){
+    d1 = 0;
+    d2 = 1;
+    d3 = 0;
+    d4 = 0;
+
+    s1 = 0;
+    s2 = SLOW;
+    s3 = 0;
+    s4 = SLOW;
+
+}

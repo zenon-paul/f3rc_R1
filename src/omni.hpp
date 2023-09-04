@@ -11,8 +11,11 @@
 #define R_HALF 3.14159265358979
 #define R_RAINTANGLE 1.57079632679489
 #define DEAD_ZONE 0.12
+#define WEAKEN 0.5
+#define SLOW 0.3
+#define GOAL_MM 100
 
-enum {TRANSLATION,ROTATION,STOP};
+enum {TRANSLATION,ROTATION,DPAD,OMNISTOP};
 
 class OMNI{
     private:
@@ -32,6 +35,15 @@ class OMNI{
         void OMNIReset();
         void translation(double rad,double power);
         void rotation(double x,double y);
+        void FRONT();
+        void BACK();
+        void LEFT();
+        void RIGHT();
+        void FRONT_RIGHT();
+        void FRONT_LEFT();
+        void BACK_RIGHT();
+        void BACK_LEFT();
+
 
 };
 double get_len(double x, double y);
